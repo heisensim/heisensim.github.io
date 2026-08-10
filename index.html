@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>heisensim — Deterministic chaos testing for Kubernetes</title>
+    <meta name="description" content="Find the bugs you can't reproduce. Deterministic chaos testing for Kubernetes. Inject faults, monitor probes, verify SLAs.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" id="main-logo">
+                <svg class="atom-icon" viewBox="0 0 100 100" width="24" height="24" fill="none" stroke="var(--accent-blue)" stroke-width="4">
+                    <circle cx="50" cy="50" r="10" fill="var(--accent-purple)"/>
+                    <ellipse cx="50" cy="50" rx="40" ry="15" transform="rotate(0 50 50)"/>
+                    <ellipse cx="50" cy="50" rx="40" ry="15" transform="rotate(60 50 50)"/>
+                    <ellipse cx="50" cy="50" rx="40" ry="15" transform="rotate(120 50 50)"/>
+                </svg>
+                heisensim
+            </a>
+            <div class="nav-links">
+                <a href="#features">The Experiment</a>
+                <a href="#properties">Hypothesis</a>
+                <a href="#comparison">Peer Review</a>
+                <a href="#install">Lab Setup</a>
+                <a href="https://github.com/heisensim/heisensim" target="_blank">GitHub</a>
+            </div>
+            <a href="#install" class="btn btn-primary cta-nav">Get Started</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="mobile-menu">
+            <a href="#features">The Experiment</a>
+            <a href="#properties">Hypothesis</a>
+            <a href="#comparison">Peer Review</a>
+            <a href="#install">Lab Setup</a>
+            <a href="https://github.com/heisensim/heisensim" target="_blank">GitHub</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="hero" class="hero fade-in">
+            <canvas id="quantum-canvas"></canvas>
+            <div class="hero-content">
+                <h1>Chaos test your <span class="gradient-text">Kubernetes</span> cluster.</h1>
+                <p class="subtitle">Like Heisenberg's uncertainty principle — but for your infrastructure. Observe the bugs that only appear when you're not looking.</p>
+                <div class="hero-ctas">
+                    <a href="#install" class="btn btn-primary">Get Started</a>
+                    <a href="https://github.com/heisensim/heisensim" class="btn btn-outline" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+            
+            <div class="terminal-wrapper oscilloscope fade-in">
+                <div class="scanline"></div>
+                <div class="terminal-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="terminal-title">bash — heisensim run</span>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line"><span class="prompt">$</span> heisensim run --namespace demo --seed 42 --duration 2m</div>
+                    <pre class="ascii-art">
+  ██╗  ██╗███████╗██╗███████╗███████╗███╗   ██╗███████╗██╗███╗   ███╗
+  ██║  ██║██╔════╝██║██╔════╝██╔════╝████╗  ██║██╔════╝██║████╗ ████║
+  ███████║█████╗  ██║███████╗█████╗  ██╔██╗ ██║███████╗██║██╔████╔██║
+  ██╔══██║██╔══╝  ██║╚════██║██╔══╝  ██║╚██╗██║╚════██║██║██║╚██╔╝██║
+  ██║  ██║███████╗██║███████║███████╗██║ ╚████║███████║██║██║ ╚═╝ ██║
+  ╚═╝  ╚═╝╚══════╝╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝╚══════╝╚═╝╚═╝     ╚═╝</pre>
+                    <div id="typewriter"></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="wave-divider-container">
+            <svg class="wave-divider" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <section id="features" class="features fade-in">
+            <h2>The Experiment</h2>
+            <div class="features-grid">
+                <div class="feature-card glass-card blueprint">
+                    <div class="emoji-icon">🎯</div>
+                    <h3>Deterministic Replay</h3>
+                    <p>Same seed = same faults = same results. Every bug is perfectly reproducible.</p>
+                </div>
+                <div class="feature-card glass-card blueprint">
+                    <div class="emoji-icon">🔍</div>
+                    <h3>Auto-Discovery</h3>
+                    <p>Scrapes K8s pods and health probes automatically. Zero CRDs, zero config.</p>
+                </div>
+                <div class="feature-card glass-card blueprint">
+                    <div class="emoji-icon">💥</div>
+                    <h3>Fault Injection</h3>
+                    <p>Pod crashes, network latency, partitions. Real infrastructure failures, controlled.</p>
+                </div>
+                <div class="feature-card glass-card blueprint">
+                    <div class="emoji-icon">📊</div>
+                    <h3>Timeline Correlation</h3>
+                    <p>Microsecond-precision mapping of faults to probe failures.</p>
+                </div>
+                <div class="feature-card glass-card blueprint">
+                    <div class="emoji-icon">🔬</div>
+                    <h3>Explore Mode</h3>
+                    <p>Run 50 seeds in parallel. Find the interesting failures automatically.</p>
+                </div>
+                <div class="feature-card glass-card blueprint">
+                    <div class="emoji-icon">🛡️</div>
+                    <h3>Property Checking</h3>
+                    <p>Verify SLA invariants: recovery time, availability, error budgets, cascade detection.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="properties" class="properties fade-in">
+            <div class="properties-content">
+                <h2>The Hypothesis → The Proof</h2>
+                <p>Define properties in TOML. heisensim evaluates them after every chaos test. Exit code 1 when they fail — CI-friendly.</p>
+                
+                <div class="code-showcase">
+                    <div class="code-block glass-card oscilloscope">
+                        <div class="scanline"></div>
+                        <div class="code-header">properties.toml</div>
+                        <pre><code>[[properties]]
+name = "fast-recovery"
+type = "recovery_time"
+max_seconds = 30
+
+[[properties]]
+name = "high-availability"
+type = "availability"
+min_percent = 99.0</code></pre>
+                    </div>
+
+                    <div class="code-block glass-card terminal-block oscilloscope">
+                        <div class="scanline"></div>
+                        <div class="code-header">verdict</div>
+                        <pre class="verdict-table"><code>╔═══════════════════════════════════════════════════════════════╗
+║  PROPERTY RESULTS                                  4/5 PASS   ║
+╠═══════════════════════════════════════════════════════════════╣
+║  ✅ PASS  fast-recovery      recovery &lt; 30s (actual: 8.2s)    ║
+║  ❌ FAIL  high-availability  avail ≥ 99% (actual: 94.2%)      ║
+║  ✅ PASS  bounded-errors     max 5 consecutive (actual: 2)    ║
+║  ✅ PASS  no-cascade         no cascading failures            ║
+║  ✅ PASS  low-latency        p99 &lt; 500ms (actual: 230ms)      ║
+╚═══════════════════════════════════════════════════════════════╝</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="comparison" class="comparison fade-in">
+            <h2>Peer Review</h2>
+            <div class="table-container glass-card blueprint">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>heisensim</th>
+                            <th>Chaos Monkey</th>
+                            <th>Litmus</th>
+                            <th>Chaos Mesh</th>
+                            <th>Gremlin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>SLA Property Checking</td>
+                            <td class="highlight">✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td>Deterministic Replay</td>
+                            <td class="highlight">✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td>Auto-Discovery</td>
+                            <td class="highlight">✅</td>
+                            <td>❌</td>
+                            <td>⚠️</td>
+                            <td>⚠️</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td>Zero-CRD CLI</td>
+                            <td class="highlight">✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td>Fault↔Failure Correlation</td>
+                            <td class="highlight">✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td>Open Source</td>
+                            <td class="highlight">✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>❌</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="install" class="install fade-in">
+            <h2>Lab Setup</h2>
+            <div class="install-grid">
+                <div class="install-card glass-card blueprint">
+                    <h3>Homebrew</h3>
+                    <div class="copy-block">
+                        <code>brew install heisensim/tap/heisensim</code>
+                        <button class="copy-btn" aria-label="Copy code">📋</button>
+                    </div>
+                </div>
+                <div class="install-card glass-card blueprint">
+                    <h3>Nix</h3>
+                    <div class="copy-block">
+                        <code>nix run github:heisensim/heisensim</code>
+                        <button class="copy-btn" aria-label="Copy code">📋</button>
+                    </div>
+                </div>
+                <div class="install-card glass-card blueprint">
+                    <h3>Cargo</h3>
+                    <div class="copy-block">
+                        <code>cargo install heisensim</code>
+                        <button class="copy-btn" aria-label="Copy code">📋</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo">
+                    <svg class="atom-icon" viewBox="0 0 100 100" width="20" height="20" fill="none" stroke="currentColor" stroke-width="4">
+                        <circle cx="50" cy="50" r="10" fill="currentColor"/>
+                        <ellipse cx="50" cy="50" rx="40" ry="15" transform="rotate(0 50 50)"/>
+                        <ellipse cx="50" cy="50" rx="40" ry="15" transform="rotate(60 50 50)"/>
+                        <ellipse cx="50" cy="50" rx="40" ry="15" transform="rotate(120 50 50)"/>
+                    </svg>
+                    heisensim
+                </span>
+                <p>Deterministic chaos testing for Kubernetes.</p>
+                <p class="built-with">Built with 🦀 Rust. Named after Werner.</p>
+                <p class="built-with">Bugs are deterministic if you control the observer.</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/heisensim/heisensim">GitHub</a>
+                <a href="#">Docs</a>
+                <a href="#">Changelog</a>
+                <a href="#">Contributing</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>License: Apache-2.0 OR MIT</p>
+        </div>
+    </footer>
+
+    <div id="toast-container"></div>
+    <script src="script.js"></script>
+</body>
+</html>

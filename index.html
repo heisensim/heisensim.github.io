@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>heisensim — Deterministic chaos testing for Kubernetes</title>
-    <meta name="description" content="Find the bugs you can't reproduce. Deterministic chaos testing for Kubernetes. Inject faults, monitor probes, verify SLAs.">
+    <title>heisensim — Inject faults. Verify SLAs. In CI.</title>
+    <meta name="description" content="Deterministic chaos testing for Kubernetes. Inject faults, monitor health probes, and verify SLA properties automatically. Exit code 1 when properties fail — CI-native.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,8 +49,8 @@
         <section id="hero" class="hero fade-in">
             <canvas id="quantum-canvas"></canvas>
             <div class="hero-content">
-                <h1>Chaos test your <span class="gradient-text">Kubernetes</span> cluster.</h1>
-                <p class="subtitle">Like Heisenberg's uncertainty principle — but for your infrastructure. Observe the bugs that only appear when you're not looking.</p>
+                <h1>Inject faults. Verify <span class="gradient-text">SLAs</span>. In CI.</h1>
+                <p class="subtitle">Deterministic chaos testing for Kubernetes. Define properties in TOML, heisensim injects faults and proves whether your system holds — same seed, same faults, same results.</p>
                 <div class="hero-ctas">
                     <a href="#install" class="btn btn-primary">Get Started</a>
                     <a href="https://github.com/heisensim/heisensim" class="btn btn-outline" target="_blank">View on GitHub</a>
@@ -104,9 +104,9 @@
                     <p>Pod crashes, network latency, partitions. Real infrastructure failures, controlled.</p>
                 </div>
                 <div class="feature-card glass-card blueprint">
-                    <div class="emoji-icon">📊</div>
-                    <h3>Timeline Correlation</h3>
-                    <p>Microsecond-precision mapping of faults to probe failures.</p>
+                    <div class="emoji-icon">🛡️</div>
+                    <h3>SLA Property Checking</h3>
+                    <p>Verify recovery time, availability, error budgets, cascade detection. Exit code 1 on failure.</p>
                 </div>
                 <div class="feature-card glass-card blueprint">
                     <div class="emoji-icon">🔬</div>
@@ -114,9 +114,9 @@
                     <p>Run 50 seeds in parallel. Find the interesting failures automatically.</p>
                 </div>
                 <div class="feature-card glass-card blueprint">
-                    <div class="emoji-icon">🛡️</div>
-                    <h3>Property Checking</h3>
-                    <p>Verify SLA invariants: recovery time, availability, error budgets, cascade detection.</p>
+                    <div class="emoji-icon">📊</div>
+                    <h3>CI-Native Outputs</h3>
+                    <p>JUnit XML, JSON, OTel metrics. Pipe to test runners, dashboards, or Grafana.</p>
                 </div>
             </div>
         </section>
@@ -214,6 +214,30 @@ min_percent = 99.0</code></pre>
                             <td>❌</td>
                         </tr>
                         <tr>
+                            <td>JUnit / JSON Output</td>
+                            <td class="highlight">✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>⚠️</td>
+                        </tr>
+                        <tr>
+                            <td>RBAC Generator</td>
+                            <td class="highlight">✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td>OTel Metrics</td>
+                            <td class="highlight">✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>⚠️</td>
+                        </tr>
+                        <tr>
                             <td>Open Source</td>
                             <td class="highlight">✅</td>
                             <td>✅</td>
@@ -250,6 +274,20 @@ min_percent = 99.0</code></pre>
                         <button class="copy-btn" aria-label="Copy code">📋</button>
                     </div>
                 </div>
+                <div class="install-card glass-card blueprint">
+                    <h3>Docker</h3>
+                    <div class="copy-block">
+                        <code>docker run ghcr.io/heisensim/heisensim</code>
+                        <button class="copy-btn" aria-label="Copy code">📋</button>
+                    </div>
+                </div>
+                <div class="install-card glass-card blueprint">
+                    <h3>GitHub Action</h3>
+                    <div class="copy-block">
+                        <code>uses: heisensim/heisensim@v0</code>
+                        <button class="copy-btn" aria-label="Copy code">📋</button>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -266,15 +304,15 @@ min_percent = 99.0</code></pre>
                     </svg>
                     heisensim
                 </span>
-                <p>Deterministic chaos testing for Kubernetes.</p>
+                <p>Inject faults. Verify SLAs. In CI.</p>
                 <p class="built-with">Built with 🦀 Rust. Named after Werner.</p>
                 <p class="built-with">Bugs are deterministic if you control the observer.</p>
             </div>
             <div class="footer-links">
                 <a href="https://github.com/heisensim/heisensim">GitHub</a>
-                <a href="#">Docs</a>
-                <a href="#">Changelog</a>
-                <a href="#">Contributing</a>
+                <a href="https://github.com/heisensim/heisensim/tree/main/examples/k8s-demo">Demo</a>
+                <a href="https://github.com/heisensim/heisensim/releases">Changelog</a>
+                <a href="https://github.com/heisensim/heisensim/blob/main/CONTRIBUTING.md">Contributing</a>
             </div>
         </div>
         <div class="footer-bottom">

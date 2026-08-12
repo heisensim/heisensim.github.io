@@ -295,9 +295,6 @@ a {
     font-size: 0.9rem;
     color: var(--text-main);
     line-height: 1.5;
-    max-height: 480px;
-    overflow-y: auto;
-    scroll-behavior: smooth;
 }
 
 .prompt {

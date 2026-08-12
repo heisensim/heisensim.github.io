@@ -34,46 +34,67 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(element);
     });
 
-    // Terminal Typewriter Effect
+    // Terminal Simulation — shows the REAL value prop
     const terminalLines = [
-        "💥 Injecting pod crash on api-server-7d4f...",
-        "🌐 Injecting network latency on redis-0 (+340ms)",
-        "🔌 Injecting network partition on worker-2...",
-        "✅ Probes recovered in 8.2s"
+        { text: "⚡ Discovered 3 pods, 4 health probes", color: "muted", delay: 600 },
+        { text: "💥 Injecting pod crash → api-server-7d4f", color: "red", delay: 800 },
+        { text: "🌐 Injecting latency → redis-0 (+340ms)", color: "muted", delay: 700 },
+        { text: "🔌 Injecting partition → worker-2 ↔ api-server", color: "muted", delay: 900 },
+        { text: "⏱  Probes recovering...", color: "muted", delay: 1200 },
+        { text: "", color: "muted", delay: 400 },
+        { text: "╔═══════════════════════════════════════════════════════════╗", color: "border", delay: 100 },
+        { text: "║  PROPERTY RESULTS                          4/5 PASS      ║", color: "header", delay: 100 },
+        { text: "╠═══════════════════════════════════════════════════════════╣", color: "border", delay: 100 },
+        { text: "║  ✅ PASS  fast-recovery     recovery < 30s (8.2s)       ║", color: "green", delay: 200 },
+        { text: "║  ❌ FAIL  high-availability  avail ≥ 99% (94.2%)        ║", color: "red", delay: 200 },
+        { text: "║  ✅ PASS  bounded-errors    max 5 consecutive (2)       ║", color: "green", delay: 200 },
+        { text: "║  ✅ PASS  no-cascade        no cascading failures       ║", color: "green", delay: 200 },
+        { text: "║  ✅ PASS  low-latency       p99 < 500ms (230ms)        ║", color: "green", delay: 200 },
+        { text: "╚═══════════════════════════════════════════════════════════╝", color: "border", delay: 100 },
+        { text: "", color: "muted", delay: 300 },
+        { text: "Exit code: 1 — SLA property failed. Seed: 0x002a", color: "red", delay: 500 },
+        { text: "", color: "muted", delay: 800 },
+        { text: "$ heisensim run --seed 0x002a  # deterministic replay", color: "prompt", delay: 600 },
+        { text: "♻  Same seed → same faults → same failure. Every time.", color: "green", delay: 0 },
     ];
-    
+
+    const colorMap = {
+        muted: 'var(--text-muted)',
+        red: 'var(--accent-red, #ef4444)',
+        green: 'var(--accent-green, #22c55e)',
+        border: 'var(--accent-purple, #8b5cf6)',
+        header: 'var(--accent-blue, #3b82f6)',
+        prompt: 'var(--text-primary, #e2e8f0)',
+    };
+
     const typewriterElement = document.getElementById('typewriter');
     let lineIndex = 0;
-    
+
     function typeLine() {
         if (lineIndex < terminalLines.length) {
+            const { text, color, delay } = terminalLines[lineIndex];
             const line = document.createElement('div');
             line.style.opacity = '0';
-            line.textContent = terminalLines[lineIndex];
-            
-            // Highlight specific parts based on emoji
-            if (terminalLines[lineIndex].includes('✅')) {
-                line.style.color = 'var(--accent-green)';
-            } else if (terminalLines[lineIndex].includes('💥')) {
-                line.style.color = 'var(--accent-red)';
-            } else {
-                line.style.color = 'var(--text-muted)';
-            }
+            line.style.fontFamily = "'Fira Code', monospace";
+            line.style.fontSize = '0.8rem';
+            line.style.lineHeight = '1.5';
+            line.style.whiteSpace = 'pre';
+            line.textContent = text;
+            line.style.color = colorMap[color] || colorMap.muted;
 
             typewriterElement.appendChild(line);
-            
-            // Fade in effect for the line
+
             setTimeout(() => {
-                line.style.transition = 'opacity 0.3s';
+                line.style.transition = 'opacity 0.2s';
                 line.style.opacity = '1';
-            }, 50);
+            }, 30);
 
             lineIndex++;
-            setTimeout(typeLine, 800 + Math.random() * 500);
+            setTimeout(typeLine, delay + Math.random() * 200);
         }
     }
 
-    setTimeout(typeLine, 1500);
+    setTimeout(typeLine, 1200);
 
     // Copy to clipboard functionality
     document.querySelectorAll('.copy-btn').forEach(btn => {

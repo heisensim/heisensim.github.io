@@ -94,8 +94,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             typewriterElement.appendChild(line);
 
-            // Scroll the page to keep the latest output line visible
-            line.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            // Auto-scroll the terminal body to keep latest output visible
+            const terminalBody = typewriterElement.closest('.terminal-body');
+            if (terminalBody) {
+                terminalBody.scrollTop = terminalBody.scrollHeight;
+            }
 
             setTimeout(() => {
                 line.style.transition = 'opacity 0.2s';

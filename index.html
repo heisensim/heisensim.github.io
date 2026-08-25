@@ -90,6 +90,11 @@
             <h2>The Experiment</h2>
             <div class="features-grid">
                 <div class="feature-card glass-card blueprint">
+                    <div class="emoji-icon">⚡</div>
+                    <h3>No Cluster Required</h3>
+                    <p>Deterministic simulation engine runs entirely in-memory. 20 seeds explored in 22ms. No Kubernetes needed.</p>
+                </div>
+                <div class="feature-card glass-card blueprint">
                     <div class="emoji-icon">🎯</div>
                     <h3>Deterministic Replay</h3>
                     <p>Same seed = same faults = same results. Every bug is perfectly reproducible.</p>
@@ -102,22 +107,27 @@
                 <div class="feature-card glass-card blueprint">
                     <div class="emoji-icon">💥</div>
                     <h3>Fault Injection</h3>
-                    <p>Pod crashes, network latency, partitions. Real infrastructure failures, controlled.</p>
+                    <p>Pod crashes, network latency, partitions, DNS failures, stress. Real infrastructure failures, controlled.</p>
                 </div>
                 <div class="feature-card glass-card blueprint">
                     <div class="emoji-icon">🛡️</div>
                     <h3>SLA Property Checking</h3>
-                    <p>Verify recovery time, availability, error budgets, cascade detection. Exit code 1 on failure.</p>
+                    <p>8 built-in properties: recovery time, availability, error budgets, cascade detection, DNS, steady-state. Exit code 1 on failure.</p>
                 </div>
                 <div class="feature-card glass-card blueprint">
                     <div class="emoji-icon">🔬</div>
-                    <h3>Explore Mode</h3>
-                    <p>Run 50 seeds in parallel. Find the interesting failures automatically.</p>
+                    <h3>Explore, Bisect & Diff</h3>
+                    <p>Run 50 seeds in parallel. Binary search for the minimal failing seed. Diff two seeds side-by-side.</p>
+                </div>
+                <div class="feature-card glass-card blueprint">
+                    <div class="emoji-icon">📋</div>
+                    <h3>Init Presets</h3>
+                    <p>Battle-tested configs for microservices, stateful workloads, and CI. One command: <code>heisensim init --preset microservice</code></p>
                 </div>
                 <div class="feature-card glass-card blueprint">
                     <div class="emoji-icon">📊</div>
-                    <h3>CI-Native Outputs</h3>
-                    <p>JUnit XML, JSON, OTel metrics. Pipe to test runners, dashboards, or Grafana.</p>
+                    <h3>CI-Native</h3>
+                    <p>GitHub Action, GitLab CI template, JUnit XML, JSON output. Drop into any pipeline.</p>
                 </div>
             </div>
         </section>
@@ -175,6 +185,14 @@ min_percent = 99.0</code></pre>
                     </thead>
                     <tbody>
                         <tr>
+                            <td>No Cluster Required</td>
+                            <td class="highlight">✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
                             <td>SLA Property Checking</td>
                             <td class="highlight">✅</td>
                             <td>❌</td>
@@ -184,6 +202,14 @@ min_percent = 99.0</code></pre>
                         </tr>
                         <tr>
                             <td>Deterministic Replay</td>
+                            <td class="highlight">✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td>Seed Bisection & Diff</td>
                             <td class="highlight">✅</td>
                             <td>❌</td>
                             <td>❌</td>
@@ -215,7 +241,7 @@ min_percent = 99.0</code></pre>
                             <td>❌</td>
                         </tr>
                         <tr>
-                            <td>JUnit / JSON Output</td>
+                            <td>GitHub Action / GitLab CI</td>
                             <td class="highlight">✅</td>
                             <td>❌</td>
                             <td>❌</td>
@@ -223,12 +249,12 @@ min_percent = 99.0</code></pre>
                             <td>⚠️</td>
                         </tr>
                         <tr>
-                            <td>RBAC Generator</td>
+                            <td>JUnit / JSON Output</td>
                             <td class="highlight">✅</td>
                             <td>❌</td>
                             <td>❌</td>
                             <td>❌</td>
-                            <td>❌</td>
+                            <td>⚠️</td>
                         </tr>
                         <tr>
                             <td>OTel Metrics</td>
@@ -285,7 +311,7 @@ min_percent = 99.0</code></pre>
                 <div class="install-card glass-card blueprint">
                     <h3>GitHub Action</h3>
                     <div class="copy-block">
-                        <code>uses: heisensim/heisensim@v0</code>
+                        <code>uses: heisensim/action@v1</code>
                         <button class="copy-btn" aria-label="Copy code">📋</button>
                     </div>
                 </div>

@@ -75,6 +75,7 @@
   ██║  ██║███████╗██║███████║███████╗██║ ╚████║███████║██║██║ ╚═╝ ██║
   ╚═╝  ╚═╝╚══════╝╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝╚══════╝╚═╝╚═╝     ╚═╝
            Deterministic Chaos Testing for Kubernetes</pre>
+                    <div class="terminal-line"><span class="prompt">$</span> heisensim process-fault --pid 1234 --fault connect-error --port 5432 --duration 30s</div>
                     <div id="typewriter"></div>
                 </div>
             </div>
@@ -128,6 +129,21 @@
                     <div class="emoji-icon">📊</div>
                     <h3>CI-Native</h3>
                     <p>GitHub Action, GitLab CI template, JUnit XML, JSON output. Drop into any pipeline.</p>
+                </div>
+                <div class="feature-card glass-card blueprint">
+                    <div class="emoji-icon">🧪</div>
+                    <h3>Process Fault Injection</h3>
+                    <p>Attach to running processes via ptrace. Intercept connect(), socket(), bind() syscalls. Inject ECONNREFUSED, EMFILE, latency — no containers, no kernel modules.</p>
+                </div>
+                <div class="feature-card glass-card blueprint">
+                    <div class="emoji-icon">🧵</div>
+                    <h3>Multi-Thread Tracing</h3>
+                    <p>Automatically traces Go goroutines, Tokio workers, JVM thread pools. Enumerates /proc/PID/task/ and handles PTRACE_O_TRACECLONE events.</p>
+                </div>
+                <div class="feature-card glass-card blueprint">
+                    <div class="emoji-icon">🔌</div>
+                    <h3>Port Filtering</h3>
+                    <p>Target specific connections with --port 5432. Reads sockaddr from process memory via PTRACE_PEEKDATA. Fault only Postgres without breaking DNS.</p>
                 </div>
             </div>
         </section>
@@ -304,7 +320,7 @@ min_percent = 99.0</code></pre>
                 <div class="install-card glass-card blueprint">
                     <h3>Docker</h3>
                     <div class="copy-block">
-                        <code>docker run ghcr.io/heisensim/heisensim</code>
+                        <code>docker run ghcr.io/heisensim/heisensim:v0.12.0</code>
                         <button class="copy-btn" aria-label="Copy code">📋</button>
                     </div>
                 </div>
